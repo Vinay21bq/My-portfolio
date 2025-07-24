@@ -18,6 +18,12 @@
   function toggleDetails(id) {
     const row = document.getElementById(id);
     row.style.display = row.style.display === "none" ? "table-row" : "none";
+      window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('submitted') === 'true') {
+      alert("Thank you! Your form was submitted successfully.");
+      // Optional: Remove the query from URL after showing alert
+      window.history.replaceState({}, document.title, window.location.pathname);
   }
 </script>
 <style>
@@ -299,14 +305,15 @@ input[type="email"] {
     <div>
         <footer>
             <h2>Contact Me</h2>
-            <form>
+            <form action="https://formsubmit.co/gottamvinay6@gmail.com" method = "POST">
+                <input type="hidden" name="_next" value="https://vinay21bq.github.io/My-portfolio/?submitted=true">
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" id="name" placeholder="Enter your name">
+                    <input type="text" id="name" name="name" placeholder="Enter your name">
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" placeholder="Enter your email">
+                    <input type="email" id="email" name="email" placeholder="Enter your email">
                 </div>
                 <div class="form-group">
                     <h4>Select Gender:</h4>
