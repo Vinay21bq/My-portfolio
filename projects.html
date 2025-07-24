@@ -1,3 +1,9 @@
+<script>
+  function toggleDetails(id) {
+    const row = document.getElementById(id);
+    row.style.display = row.style.display === "none" ? "table-row" : "none";
+  }
+</script>
 <style>
 
     .head {
@@ -64,31 +70,43 @@
 <body>
     <div class="head">
         <h1 id="project"><ins>Projects</ins></h1>
-        <table>
-            <tr>
-                <th>Sl.No</th>
-                <th>Project Title</th>
-                <th>Role</th>
-                <th>Description</th> 
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Employee Performance Appraisal System</td>
-                <td>Front-end Developer</td>
-                <td>
-                    A structured framework used by organizations to evaluate employees' job performance and productivity.
-                    It helps align individual contributions with organizational objectives while identifying areas for improvement.
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Water Quality Prediction</td>
-                <td>Designer</td>
-                <td>
-                    A deep learning-based model that analyzes non-linear relationships among water quality parameters
-                    and environmental factors. It helps forecast pollution levels and ensure safe water management.
-                </td>
-            </tr>
-        </table>
-    </div>
+        <table id="projectsTable">
+  <tr>
+    <th>Sl.No</th>
+    <th>Project Title</th>
+    <th>Role</th>
+    <th>Description</th>
+  </tr>
+
+  <!-- Project 1 -->
+  <tr onclick="toggleDetails('details1')" style="cursor: pointer;">
+    <td>1</td>
+    <td>Water Quality Prediction</td>
+    <td>Front-End Developer</td>
+    <td>Deep learning model for water monitoring 🔽</td>
+  </tr>
+  <tr id="details1" class="details-row" style="display: none;">
+    <td colspan="4">
+      <strong>Full Title:</strong> Comparative Analysis of Deep Learning Models for Enhanced Water Quality Prediction<br>
+      <strong>Tech Stack:</strong> HTML5, CSS, JavaScript, React JS, Streamlit<br>
+      <strong>Description:</strong> Designed and implemented a hybrid LSTM-CNN model to predict parameters like pH, turbidity, and DO. Aimed to deliver accurate and real-time monitoring using deep learning.
+    </td>
+  </tr>
+
+  <!-- Project 2 -->
+  <tr onclick="toggleDetails('details2')" style="cursor: pointer;">
+    <td>2</td>
+    <td>Employee Performance Appraisal System</td>
+    <td>Full-Stack Developer</td>
+    <td>HR appraisal tool with web tech stack 🔽</td>
+  </tr>
+  <tr id="details2" class="details-row" style="display: none;">
+    <td colspan="4">
+      <strong>Full Title:</strong> Employee Performance Appraisal System<br>
+      <strong>Tech Stack:</strong> HTML, CSS, JavaScript, Bootstrap, PHP/Python/Node.js, MySQL/MongoDB<br>
+      <strong>Description:</strong> Web-based system to simplify employee evaluations and support HR decisions with automated performance tracking.
+    </td>
+  </tr>
+</table>
+</div>
 </body>
