@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+    .head {
+        background-color: #f8f1e4;
+        text-align: center;
+        margin: 20px auto;
+        padding: 20px;
+        border: 2px solid black;
+        border-radius: 10px;
+        max-width: 900px;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .sub {
+        text-align: left;
+        font-size: 16px;
+        margin-top: 10px;
+        padding: 10px;
+        line-height: 1.6;
+    }
+        @media screen and (max-width: 768px) {
+        .head {
+            width: 90%;
+            padding: 15px;
+    }
+    
+    table th, table td {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+header{
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+nav a, footer a {
+    color: cyan;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover, footer a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 80%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-group label {
+    display: inline-block;
+    margin: 5px;
+}
+
+.submit-btn {
+    background-color: cyan;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: lightblue;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-icon {
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+    transition: transform 0.1s ease-in-out;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+</style>
+<body></body>
+<footer>
+<h2>Contact Me</h2>
+<form>
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name">
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email">
+    </div>
+    <div class="form-group">
+        <h4>Select Gender:</h4>
+        <label><input type="radio" name="gender" value="male"> Male</label>
+        <label><input type="radio" name="gender" value="female"> Female</label>
+    </div>
+    <button type="submit" class="submit-btn">Submit</button>
+</form>
+
+<p>&copy; 2024 Vinay VVIT. All Rights Reserved.</p>
+
+<div class="social-links">
+    <a href="mailto:gottamvinay6@gmail.com">
+        <img src="Gmail.jpg" alt="Gmail" class="social-icon">
+    </a>
+    <a href="https://www.linkedin.com/in/vinay-gottam-06497424a/" target="_blank">
+        <img src="Linkedin.jpg" alt="LinkedIn" class="social-icon">
+    </a>
+    <a href="https://www.instagram.com/vin_y_0017/" target="_blank">
+        <img src="instagram.jpeg" alt="Instagram" class="social-icon">
+    </a>
+</div>
+</footer>
+</html>
