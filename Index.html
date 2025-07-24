@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My profile </title>
+        <link rel="icon" type="icon/image" href="/index/logo2.jpg">
+    </head> 
+<header>
+    <h1 id="myportfolio">My Portfolio</h1>
+        <nav>
+            <a href="about.html">About</a> |
+            <a href="skills.html">Skills</a> |
+            <a href="education.html">Education</a> |
+            <a href="projects.html">Projects</a> |
+            <a href="contact.html">Contact</a>
+        </nav>
+</header>
+<script>
+  function toggleDetails(id) {
+    const row = document.getElementById(id);
+    row.style.display = row.style.display === "none" ? "table-row" : "none";
+  }
+</script>
+<style>
+
+.head {
+    background-color: #f8f1e4;
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid black;
+    /*border-radius: 10px;*/
+    max-width: 900px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.sub {
+    text-align: left;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 10px;
+    line-height: 1.6;
+}
+.top {
+    text-align: right;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: white;
+    text-align: left;
+}
+
+table th {
+    background-color: #333;
+    color: white;
+    padding: 12px;
+    font-size: 18px;
+    border: 2px solid black;
+}
+
+table td {
+    padding: 10px;
+    border: 2px solid black;
+    font-size: 16px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table td:hover {
+    background-color: #ddd;
+    transition: 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+    .head {
+        width: 90%;
+        padding: 15px;
+}
+
+table th, table td {
+    font-size: 14px;
+    padding: 8px;
+}
+
+}
+
+header{
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+nav a, footer a {
+    color: cyan;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover, footer a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 80%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-group label {
+    display: inline-block;
+    margin: 5px;
+}
+
+.submit-btn {
+    background-color: cyan;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.9s;
+}
+
+.submit-btn:hover {
+    background-color: grey;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-icon {
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+    transition: transform 0.1s ease-in-out;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+.details-row {
+  background-color: #f9f9f9;
+  font-size: 15px;
+  transition: all 5s ease;
+}
+.details-row td {
+  padding: 12px;
+  border-top: none;
+}
+
+</style>
+<body>
+    <div class="head">
+        <h1>Profile Summary</h1>
+        <img src="profile pic.jpg" alt="Profile Picture" style="height: 120px; width:100px; border: 1px solid black ; ">
+        <h2>Gottam Vinay - 21BQ1A1250</h2>
+            <div class="sub">
+                <h3>Summary:</h3>
+                <p>
+                    I am Vinay, completed my <b>B.Tech</b> graduation in <i>Information Technology</i> at <b>Vasireddy venkatadri institute of technology</b>. 
+                    I am eager to secure an opportunity where I can demonstrate my skills and contribute effectively to an organization.<br>
+                    My passion for software development is strong, and I am excited to showcase my abilities.
+                </p>
+                <h3>Hobbies</h3>
+                <ul>
+                    <li>Watching movies</li>
+                    <li>Playing cricket</li>
+                </ul>
+    
+                <h3>Strengths</h3>
+                <ul>
+                    <li>Quality-driven assessment</li>
+                    <li>Collaborative work</li>
+                    <li>Effective communication</li>
+                    <li>Positive attitude</li>
+                </ul>
+            </div>
+    </div>
+    
+    <div class="head">
+        <h1><ins>Skills</ins></h1>
+            <div class="sub">
+                <ol>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Java</li>
+                </ol>
+            </div>
+    </div>
+    
+    <div class="head">
+        <h1><ins>Education</ins></h1>
+        <table id="table">
+            <tr>
+                <th>Sl.No</th>
+                <th>Course</th>
+                <th>Institution</th>
+                <th>University/Board</th>
+                <th>Year of Passing</th>
+                <th>Percentage</th>
+            </tr>
+            <tr onclick="showHideRow('hidden_row1');">
+                <td>1</td>
+                <td>B.Tech (Information Technology)</td>
+                <td>Vasireddy Venkatadri Institute of Technology</td>
+                <td>JNTUK</td>
+                <td>2025</td>
+                <td>6.85 CGPA</td>
+            </tr>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Intermediate</td>
+                <td>Narayana Junior College</td>
+                <td>Intermediate Board of Education</td>
+                <td>2021</td>
+                <td>83.7%</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>SSC</td>
+                <td>Narayana English Medium School</td>
+                <td>State Board of Secondary Education</td>
+                <td>2019</td>
+                <td>9.7 GPA</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="head">
+        <h1><ins>Projects</ins></h1>
+        <table id="projectsTable">
+  <tr>
+    <th>Sl.No</th>
+    <th>Project Title</th>
+    <th>Role</th>
+    <th>Description</th>
+  </tr>
+
+  <!-- Project 1 -->
+  <tr onclick="toggleDetails('details1')" style="cursor: pointer;">
+    <td>1</td>
+    <td>Water Quality Prediction</td>
+    <td>Front-End Developer</td>
+    <td>Deep learning model for water monitoring 🔽</td>
+  </tr>
+  <tr id="details1" class="details-row" style="display: none;">
+    <td colspan="4">
+      <strong>Full Title:</strong> Comparative Analysis of Deep Learning Models for Enhanced Water Quality Prediction<br>
+      <strong>Tech Stack:</strong> HTML5, CSS, JavaScript, React JS, Streamlit<br>
+      <strong>Description:</strong> Designed and implemented a hybrid LSTM-CNN model to predict parameters like pH, turbidity, and DO. Aimed to deliver accurate and real-time monitoring using deep learning.
+    </td>
+  </tr>
+
+  <!-- Project 2 -->
+  <tr onclick="toggleDetails('details2')" style="cursor: pointer;">
+    <td>2</td>
+    <td>Employee Performance Appraisal System</td>
+    <td>Full-Stack Developer</td>
+    <td>HR appraisal tool with web tech stack 🔽</td>
+  </tr>
+  <tr id="details2" class="details-row" style="display: none;">
+    <td colspan="4">
+      <strong>Full Title:</strong> Employee Performance Appraisal System<br>
+      <strong>Tech Stack:</strong> HTML, CSS, JavaScript, Bootstrap, PHP/Python/Node.js, MySQL/MongoDB<br>
+      <strong>Description:</strong> Web-based system to simplify employee evaluations and support HR decisions with automated performance tracking.
+    </td>
+  </tr>
+</table>
+    </div>
+</body>
+    
+    <div>
+        <footer>
+            <h2>Contact Me</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <h4>Select Gender:</h4>
+                    <label><input type="radio" name="gender" value="male"> Male</label>
+                    <label><input type="radio" name="gender" value="female"> Female</label>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        
+            <p>&copy; 2024 Vinay VVIT. All Rights Reserved.</p>
+        
+            <div class="social-links">
+                <a href="mailto:gottamvinay6@gmail.com">
+                    <img src="Gmail.jpg" alt="Gmail" class="social-icon">
+                </a>
+                <a href="https://www.linkedin.com/in/vinay-gottam-06497424a/" target="_blank">
+                    <img src="Linkedin.jpg" alt="LinkedIn" class="social-icon">
+                </a>
+                <a href="https://www.instagram.com/vin_y_0017/" target="_blank">
+                    <img src="instagram.jpeg" alt="Instagram" class="social-icon">
+                </a>
+                <div class="top">
+                <a href="#myportfolio">Go to Top</a>
+            </div>
+            </div>
+        </footer>
+    </div>
+</html>
