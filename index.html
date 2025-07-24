@@ -20,7 +20,7 @@
     row.style.display = row.style.display === "none" ? "table-row" : "none";
       window.onload = function() {
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('submitted') === 'true') {
+    if (urlParams.get("submitted") === "true") {
       alert("Thank you! Your form was submitted successfully.");
       // Optional: Remove the query from URL after showing alert
       window.history.replaceState({}, document.title, window.location.pathname);
