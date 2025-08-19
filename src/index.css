@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer base {
   :root {
     --background: 220 15% 8%;
@@ -193,12 +191,49 @@
   }
 
   .particle {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: hsl(var(--primary));
-    animation: particles 15s linear infinite;
+  position: absolute;
+  top: -10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: fall linear infinite, twinkle ease-in-out infinite;
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* Falling with sideways drift */
+@keyframes fall {
+  0% {
+    transform: translateY(0) translateX(0);
   }
+  50% {
+    transform: translateY(50vh) translateX(-20px);
+  }
+  100% {
+    transform: translateY(110vh) translateX(20px);
+  }
+}
+
+/* Twinkle (fade in/out) */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Different particle colors */
+.particle:nth-child(3n) {
+  color: hsl(var(--electric-blue));
+  background: hsl(var(--electric-blue));
+}
+.particle:nth-child(3n+1) {
+  color: hsl(var(--cyber-green));
+  background: hsl(var(--cyber-green));
+}
+.particle:nth-child(3n+2) {
+  color: hsl(var(--neon-purple));
+  background: hsl(var(--neon-purple));
+}
+
 
   .typewriter {
     overflow: hidden;
@@ -251,4 +286,23 @@
   .glow-button:hover::before {
     left: 100%;
   }
+  /* Neon Pulse Ripple */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, hsl(var(--electric-blue)) 20%, transparent 70%);
+  box-shadow: 0 0 20px hsl(var(--electric-blue));
+  transform: scale(0);
+  animation: neon-pulse 1s ease-out forwards;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+@keyframes neon-pulse {
+  to {
+    transform: scale(6);
+    opacity: 0;
+  }
+}
+
 }
