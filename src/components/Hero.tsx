@@ -1,12 +1,12 @@
-// If you're on Next.js app router, keep this. If not, it's harmless.
 'use client';
 
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
 import heroImage from '@/assets/hero-bg.jpg';
 
 const Hero = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -17,7 +17,6 @@ const Hero = () => {
     'AI Enthusiast'
   ];
 
-  // Stable particle positions (no jumping on re-r
   const particles = useMemo(
     () =>
       Array.from({ length: 20 }).map(() => ({
@@ -27,6 +26,7 @@ const Hero = () => {
       })),
     []
   );
+
   useEffect(() => {
     const currentTitle = titles[currentIndex % titles.length];
     const timer =
@@ -42,18 +42,20 @@ const Hero = () => {
     return () => clearTimeout(timer);
   }, [displayText, currentIndex]);
 
-  const handleHeroClick = (e) => {
-    const ripple = document.createElement('span');
+  const handleHeroClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
 
+    const ripple = document.createElement('span');
     const size = 20;
-    const rect = container.getBoundingClientRect();
+    const rect = containerRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left - size / 2;
     const y = e.clientY - rect.top - size / 2;
 
     ripple.style.width = ripple.style.height = `${size}px`;
     ripple.style.left = `${x}px`;
     ripple.style.top = `${y}px`;
-    container.appendChild(ripple);
+    ripple.className = 'ripple';
+    containerRef.current.appendChild(ripple);
     setTimeout(() => ripple.remove(), 1000);
   };
 
@@ -64,10 +66,11 @@ const Hero = () => {
   return (
     <section
       id="home"
+      ref={containerRef}
       onClick={handleHeroClick}
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
       style={{
-        backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url(${heroImage})`,
+        backgroundImage: `linear-gradient(rgba(15,23,42,0.8), rgba(15,23,42,0.8)), url(${heroImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
