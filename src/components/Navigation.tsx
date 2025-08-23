@@ -1,17 +1,26 @@
-import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Mobile menu state
+  const [activeSection, setActiveSection] = useState("home");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      const sections = ['home', 'about', 'skills', 'projects', 'experience', 'education', 'blog', 'contact'];
-      const currentSection = sections.find(section => {
+      const sections = [
+        "home",
+        "about",
+        "skills",
+        "projects",
+        "experience",
+        "education",
+        "blog",
+        "contact",
+      ];
+      const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -25,43 +34,55 @@ const Navigation = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
+    }
+  }, [isMenuOpen]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
-    setIsMenuOpen(false); // Close menu after selecting
+    setIsMenuOpen(false);
   };
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'education', label: 'Education' },
-    { id: 'blog', label: 'Blog' },
-    { id: 'contact', label: 'Contact' },
+    { id: "home", label: "Home" },
+    { id: "about", label: "About" },
+    { id: "skills", label: "Skills" },
+    { id: "projects", label: "Projects" },
+    { id: "experience", label: "Experience" },
+    { id: "education", label: "Education" },
+    { id: "blog", label: "Blog" },
+    { id: "contact", label: "Contact" },
   ];
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'cyber-card backdrop-blur-md' : 'bg-transparent'
-      }`}
-    >
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
+    <>
+      {/* Top Navbar */}
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled ? "cyber-card backdrop-blur-md" : "bg-transparent"
+        }`}
+      >
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           {/* Logo */}
           <div className="font-cyber text-xl font-bold text-gradient">
             VINAY.DEV
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Nav */}
           <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
@@ -69,8 +90,8 @@ const Navigation = () => {
                 onClick={() => scrollToSection(item.id)}
                 className={`font-tech transition-all duration-300 hover:text-primary ${
                   activeSection === item.id
-                    ? 'text-primary neon-text'
-                    : 'text-muted-foreground hover:text-foreground'
+                    ? "text-primary neon-text"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {item.label}
@@ -78,12 +99,11 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Resume Download Button (Desktop) */}
+          {/* Resume Button (Desktop) */}
           <a
             href="/Resume_Vinay.pdf"
             download="Resume_Vinay.pdf"
             className="hidden md:block"
-            style={{ textDecoration: 'none' }}
           >
             <Button variant="outline" className="glow-button hidden md:block">
               Download Resume
@@ -95,43 +115,57 @@ const Navigation = () => {
             variant="outline"
             size="sm"
             className="lg:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => setIsMenuOpen(true)}
           >
             Menu
           </Button>
         </div>
+      </nav>
 
-        {/* Mobile Menu Dropdown */}
-        {isMenuOpen && (
-          <div className="lg:hidden mt-4 flex flex-col space-y-4 animate-fade-in">
+      {/* Right-side Drawer + Overlay */}
+      {isMenuOpen && (
+        <>
+          {/* Background Overlay */}
+          <div
+            className="fixed inset-0 bg-black/40 z-40"
+            onClick={() => setIsMenuOpen(false)}
+          ></div>
+
+          {/* Drawer Panel */}
+          <div className="fixed top-0 right-0 w-64 h-full bg-black/90 shadow-lg z-50 flex flex-col p-6 space-y-6 animate-slide-in">
+            {/* Close Button */}
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="self-end text-gray-400 hover:text-white"
+            >
+              ✕
+            </button>
+
+            {/* Nav Links */}
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`font-tech text-left px-4 py-2 rounded-md transition-all duration-300 hover:bg-muted ${
+                className={`font-tech text-left text-lg transition-all duration-300 hover:text-primary ${
                   activeSection === item.id
-                    ? 'text-primary neon-text'
-                    : 'text-muted-foreground hover:text-foreground'
+                    ? "text-primary neon-text"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {item.label}
               </button>
             ))}
 
-            {/* Resume Download (Mobile) */}
-            <a
-              href="/Resume_Vinay.pdf"
-              download="Resume_Vinay.pdf"
-              className="px-4"
-            >
+            {/* Resume Download */}
+            <a href="/Resume_Vinay.pdf" download="Resume_Vinay.pdf">
               <Button className="w-full glow-button bg-gradient-secondary">
                 Download Resume
               </Button>
             </a>
           </div>
-        )}
-      </div>
-    </nav>
+        </>
+      )}
+    </>
   );
 };
 

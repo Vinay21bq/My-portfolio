@@ -17,6 +17,7 @@ const Hero = () => {
     'AI Enthusiast'
   ];
 
+  // Stable particle positions (no jumping on re-r
   const particles = useMemo(
     () =>
       Array.from({ length: 20 }).map(() => ({
@@ -26,7 +27,6 @@ const Hero = () => {
       })),
     []
   );
-
   useEffect(() => {
     const currentTitle = titles[currentIndex % titles.length];
     const timer =
@@ -43,7 +43,6 @@ const Hero = () => {
   }, [displayText, currentIndex]);
 
   const handleHeroClick = (e) => {
-    const container = e.currentTarget; 
     const ripple = document.createElement('span');
 
     const size = 20;
@@ -54,8 +53,6 @@ const Hero = () => {
     ripple.style.width = ripple.style.height = `${size}px`;
     ripple.style.left = `${x}px`;
     ripple.style.top = `${y}px`;
-    ripple.className = 'ripple'; 
-
     container.appendChild(ripple);
     setTimeout(() => ripple.remove(), 1000);
   };

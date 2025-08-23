@@ -67,7 +67,7 @@ const About = () => {
                   <div className="text-sm text-muted-foreground">GPA B.Tech</div>
                 </div>
                 <div className="cyber-card p-4 rounded-lg">
-                  <div className="text-2xl font-bold text-cyber-green">2+</div>
+                  <div className="text-2xl font-bold text-cyber-green">2</div>
                   <div className="text-sm text-muted-foreground">Internships</div>
                 </div>
               </div>
